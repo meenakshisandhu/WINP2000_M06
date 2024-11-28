@@ -1,23 +1,13 @@
-# WINP2000_M06
-<<<<<<< HEAD
+# Go Time API
 
-## Compile for Linux:
-Run the following command to compile for Linux:\
-'''bash
-GOOS=linux GOARCH=amd64 go build -o helloserver-linux main.go
-'''
-## Compile for Windows:
-Run the following command to compile for Windows:\
-'''bash
-GOOS=windows GOARCH=amd64 go build -o helloserver-windows.exe main.go
-'''
+This project provides a simple REST API to get the current time in Toronto and log the time in a MySQL database. The API has two endpoints:
 
-## Compile for macOS:
-Run the following command to compile for macOS (Darwin):\
-'''bash
-GOOS=darwin GOARCH=arm64 go build -o helloserver-mac main.go
+- `/current-time`: Returns the current time in Toronto and logs it to the database.
+- `/logged-times`: Retrieves and returns a list of all logged times in the database.
 
-'''
-=======
-WINP2000 Course
->>>>>>> a238f86e84746c0ab3a892079f174f0c51e80720
+## Requirements
+
+- Go 1.20 or later
+- MySQL database
+- Docker (optional for running MySQL in a container)
+- Environment variables in a `.env` file
