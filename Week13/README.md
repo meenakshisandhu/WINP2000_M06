@@ -56,6 +56,8 @@ This project provides a simple REST API to get the current time in Toronto and l
 
 ![image](https://github.com/user-attachments/assets/24c28f2c-0168-4418-8c1b-c451374c3794)
 
+## Dockerise Application
+<img width="661" alt="image" src="https://github.com/user-attachments/assets/f637c067-dda6-4973-ab6f-022dd0191c2c">
 
 
 
