@@ -45,7 +45,7 @@ func initDB() {
 
 	// Use the environment variable in the DSN string
 	//dsn := fmt.Sprintf("root:%s@tcp(127.0.0.1:3306)/toronto_time", mysqlPassword)
-	dsn := fmt.Sprintf("root:%s@tcp(mysql-toronto-time:3306)/toronto_time", mysqlPassword)
+	dsn := fmt.Sprintf("root:%s@tcp(mysql-toronto-time:3307)/toronto_time", mysqlPassword)
 	db, err = sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatalf("Error connecting to database: %v", err)
