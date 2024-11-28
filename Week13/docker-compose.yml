@@ -1,38 +1,27 @@
-version: "3.8"
+version: '3.8'
+
 services:
-  # MySQL service
-  mysql-toronto-time:
-    image: mysql:8.0
+  mysql-db:
+    image: mysql:5.7
     container_name: mysql-toronto-time
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword  # Replace with your actual password
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}  # Use the password from the .env file
       MYSQL_DATABASE: toronto_time
-    ports:
-      - "3306:3306"
-    networks:
-      - app-network
     volumes:
-      - mysql-data:/var/lib/mysql  # Persists MySQL data
+      - mysql-data:/var/lib/mysql
+    ports:
+      - "3307:3306"
 
-  # Go application service
-  go-toronto-time-app:
-    build:
-      context: .
-      dockerfile: Dockerfile  # Ensure the correct Dockerfile is used
-    container_name: go-toronto-time-app
-    depends_on:
-      - mysql-toronto-time  # Ensure MySQL starts before the Go app
+  go-app:
+    build: .
+    container_name: go-toronto-time
     environment:
-      MYSQL_PASSWORD: rootpassword  # Your MySQL password
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}  # Ensure the Go app uses the same password
     ports:
       - "8080:8080"
-    networks:
-      - app-network
-
-networks:
-  app-network:
-    driver: bridge
+    depends_on:
+      - mysql-db
+    restart: always
 
 volumes:
   mysql-data:
-    driver: local
